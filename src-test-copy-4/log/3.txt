@@ -1,0 +1,112 @@
+# origin code
+ax = self.sparse_multiply(x)  # shape=(2485, 80)
+if not self.opt['no_alpha_sigmoid']:
+  alpha = torch.sigmoid(self.alpha_train)
+else:
+  alpha = self.alpha_train
+
+f = alpha * (ax - x)
+if self.opt['add_source']:
+  f = f + self.beta_train * self.x0
+
+2023/08/10 05:50:32 PM {'use_cora_defaults': False, 'dataset': 'Cora', 'data_norm': 'rw', 'self_loop_weight': 1.0, 'use_labels': False, 'geom_gcn_splits': False, 'num_splits': 2, 'label_rate': 0.5, 'planetoid_split': False, 'hidden_dim': 80, 'fc_out': False, 'input_dropout': 0.5, 'dropout': 0.046878964627763316, 'batch_norm': False, 'optimizer': 'adamax', 'lr': 0.022924849756740397, 'decay': 0.00507685443154266, 'epoch': 100, 'alpha': 1.0, 'alpha_dim': 'sc', 'no_alpha_sigmoid': False, 'beta_dim': 'sc', 'block': 'constant', 'function': 'laplacian', 'use_mlp': False, 'add_source': True, 'cgnn': False, 'time': 18.294754260552843, 'augment': False, 'method': 'dopri5', 'step_size': 1, 'max_iters': 100, 'adjoint_method': 'adaptive_heun', 'adjoint': False, 'adjoint_step_size': 1, 'tol_scale': 821.9773048827274, 'tol_scale_adjoint': 1.0, 'ode_blocks': 1, 'max_nfe': 2000, 'no_early': False, 'earlystopxT': 3, 'max_test_steps': 100, 'leaky_relu_slope': 0.2, 'attention_dropout': 0.0, 'heads': 8, 'attention_norm_idx': 1, 'attention_dim': 128, 'mix_features': False, 'reweight_attention': False, 'attention_type': 'scaled_dot', 'square_plus': True, 'jacobian_norm2': None, 'total_deriv': None, 'kinetic_energy': None, 'directional_penalty': None, 'not_lcc': True, 'rewiring': None, 'gdc_method': 'ppr', 'gdc_sparsification': 'topk', 'gdc_k': 64, 'gdc_threshold': 0.01, 'gdc_avg_degree': 64, 'ppr_alpha': 0.05, 'heat_time': 3.0, 'att_samp_pct': 1, 'use_flux': False, 'exact': True, 'M_nodes': 64, 'new_edges': 'random', 'sparsify': 'S_hat', 'threshold_type': 'addD_rvR', 'rw_addD': 0.02, 'rw_rmvR': 0.02, 'rewire_KNN': False, 'rewire_KNN_T': 'T0', 'rewire_KNN_epoch': 10, 'rewire_KNN_k': 64, 'rewire_KNN_sym': False, 'KNN_online': False, 'KNN_online_reps': 4, 'KNN_space': 'pos_distance', 'beltrami': False, 'fa_layer': False, 'pos_enc_type': 'GDC', 'pos_enc_orientation': 'row', 'feat_hidden_dim': 64, 'pos_enc_hidden_dim': 16, 'edge_sampling': False, 'edge_sampling_T': 'T0', 'edge_sampling_epoch': 5, 'edge_sampling_add': 0.64, 'edge_sampling_add_type': 'importance', 'edge_sampling_rmv': 0.32, 'edge_sampling_sym': False, 'edge_sampling_online': False, 'edge_sampling_online_reps': 4, 'edge_sampling_space': 'attention', 'symmetric_attention': False, 'fa_layer_edge_sampling_rmv': 0.8, 'gpu': 0, 'pos_enc_csv': False, 'pos_dist_quantile': 0.001, 'count': '3', 'seed': 2023, 'adaptive': False, 'attention_rewiring': False, 'baseline': False, 'cpus': 1, 'dt': 0.001, 'dt_min': 1e-05, 'gpus': 0.5, 'grace_period': 20, 'max_epochs': 1000, 'metric': 'accuracy', 'name': 'cora_beltrami_splits', 'num_init': 1, 'num_samples': 1000, 'patience': 100, 'reduction_factor': 10, 'regularise': False, 'use_lcc': True}
+2023/08/10 05:50:34 PM Epoch: 001, Runtime 1.968246, Loss 1.949745, forward nfe 50, backward nfe 0, Train: 0.6571, Val: 0.4912, Test: 0.5066, Best time: 5.3984
+2023/08/10 05:50:34 PM Epoch: 002, Runtime 0.260709, Loss 1.889965, forward nfe 240, backward nfe 0, Train: 0.6571, Val: 0.4912, Test: 0.5066, Best time: 18.2948
+2023/08/10 05:50:34 PM Epoch: 003, Runtime 0.232649, Loss 1.761618, forward nfe 430, backward nfe 0, Train: 0.7500, Val: 0.5721, Test: 0.5736, Best time: 6.8495
+2023/08/10 05:50:35 PM Epoch: 004, Runtime 0.236309, Loss 1.571968, forward nfe 614, backward nfe 0, Train: 0.8571, Val: 0.6875, Test: 0.6772, Best time: 4.9772
+2023/08/10 05:50:35 PM Epoch: 005, Runtime 0.226431, Loss 1.309588, forward nfe 798, backward nfe 0, Train: 0.8786, Val: 0.7176, Test: 0.7421, Best time: 8.9471
+2023/08/10 05:50:35 PM Epoch: 006, Runtime 0.215004, Loss 1.048310, forward nfe 982, backward nfe 0, Train: 0.9071, Val: 0.7588, Test: 0.7574, Best time: 8.8884
+2023/08/10 05:50:35 PM Epoch: 007, Runtime 0.251998, Loss 0.820183, forward nfe 1166, backward nfe 0, Train: 0.9286, Val: 0.7949, Test: 0.7909, Best time: 19.6692
+2023/08/10 05:50:36 PM Epoch: 008, Runtime 0.244832, Loss 0.603423, forward nfe 1356, backward nfe 0, Train: 0.9357, Val: 0.8243, Test: 0.8142, Best time: 19.7734
+2023/08/10 05:50:36 PM Epoch: 009, Runtime 0.238148, Loss 0.477665, forward nfe 1546, backward nfe 0, Train: 0.9429, Val: 0.8412, Test: 0.8244, Best time: 15.2824
+2023/08/10 05:50:36 PM Epoch: 010, Runtime 0.259721, Loss 0.342326, forward nfe 1730, backward nfe 0, Train: 0.9214, Val: 0.8478, Test: 0.8305, Best time: 26.4561
+2023/08/10 05:50:36 PM Epoch: 011, Runtime 0.220001, Loss 0.316450, forward nfe 1908, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 20.6173
+2023/08/10 05:50:37 PM Epoch: 012, Runtime 0.217746, Loss 0.285035, forward nfe 2086, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:37 PM Epoch: 013, Runtime 0.241519, Loss 0.244090, forward nfe 2264, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:37 PM Epoch: 014, Runtime 0.224085, Loss 0.228601, forward nfe 2442, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:37 PM Epoch: 015, Runtime 0.225901, Loss 0.296391, forward nfe 2626, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:38 PM Epoch: 016, Runtime 0.223281, Loss 0.230780, forward nfe 2810, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:38 PM Epoch: 017, Runtime 0.241977, Loss 0.283048, forward nfe 2994, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:38 PM Epoch: 018, Runtime 0.224238, Loss 0.278329, forward nfe 3178, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:38 PM Epoch: 019, Runtime 0.209000, Loss 0.241916, forward nfe 3350, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:38 PM Epoch: 020, Runtime 0.202429, Loss 0.234161, forward nfe 3516, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:39 PM Epoch: 021, Runtime 0.206309, Loss 0.226243, forward nfe 3682, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:39 PM Epoch: 022, Runtime 0.220060, Loss 0.277647, forward nfe 3848, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:39 PM Epoch: 023, Runtime 0.205107, Loss 0.283074, forward nfe 4014, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:39 PM Epoch: 024, Runtime 0.203000, Loss 0.226026, forward nfe 4180, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:39 PM Epoch: 025, Runtime 0.206086, Loss 0.198221, forward nfe 4346, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:40 PM Epoch: 026, Runtime 0.209579, Loss 0.214862, forward nfe 4512, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:40 PM Epoch: 027, Runtime 0.222459, Loss 0.279228, forward nfe 4684, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:40 PM Epoch: 028, Runtime 0.201971, Loss 0.251637, forward nfe 4856, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:40 PM Epoch: 029, Runtime 0.228359, Loss 0.253392, forward nfe 5028, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:41 PM Epoch: 030, Runtime 0.226253, Loss 0.243473, forward nfe 5200, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:41 PM Epoch: 031, Runtime 0.217333, Loss 0.225073, forward nfe 5372, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:41 PM Epoch: 032, Runtime 0.230270, Loss 0.229708, forward nfe 5538, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:41 PM Epoch: 033, Runtime 0.226891, Loss 0.164810, forward nfe 5704, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:41 PM Epoch: 034, Runtime 0.224999, Loss 0.200375, forward nfe 5870, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:42 PM Epoch: 035, Runtime 0.213351, Loss 0.208926, forward nfe 6036, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:42 PM Epoch: 036, Runtime 0.207564, Loss 0.206281, forward nfe 6202, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:42 PM Epoch: 037, Runtime 0.210039, Loss 0.223028, forward nfe 6368, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:42 PM Epoch: 038, Runtime 0.209872, Loss 0.214388, forward nfe 6534, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:42 PM Epoch: 039, Runtime 0.226928, Loss 0.195126, forward nfe 6700, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:43 PM Epoch: 040, Runtime 0.215117, Loss 0.172090, forward nfe 6860, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:43 PM Epoch: 041, Runtime 0.211315, Loss 0.210725, forward nfe 7020, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:43 PM Epoch: 042, Runtime 0.208312, Loss 0.170386, forward nfe 7180, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:43 PM Epoch: 043, Runtime 0.217813, Loss 0.161322, forward nfe 7340, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:44 PM Epoch: 044, Runtime 0.211934, Loss 0.166245, forward nfe 7500, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:44 PM Epoch: 045, Runtime 0.213862, Loss 0.164343, forward nfe 7660, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:44 PM Epoch: 046, Runtime 0.208051, Loss 0.221679, forward nfe 7820, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:44 PM Epoch: 047, Runtime 0.265219, Loss 0.170747, forward nfe 7980, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:45 PM Epoch: 048, Runtime 0.257904, Loss 0.207193, forward nfe 8134, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:45 PM Epoch: 049, Runtime 0.195270, Loss 0.263902, forward nfe 8288, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:45 PM Epoch: 050, Runtime 0.192112, Loss 0.202526, forward nfe 8442, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:45 PM Epoch: 051, Runtime 0.193107, Loss 0.226373, forward nfe 8596, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:45 PM Epoch: 052, Runtime 0.198190, Loss 0.169931, forward nfe 8750, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:45 PM Epoch: 053, Runtime 0.196079, Loss 0.165576, forward nfe 8904, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:46 PM Epoch: 054, Runtime 0.193987, Loss 0.219192, forward nfe 9058, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:46 PM Epoch: 055, Runtime 0.193061, Loss 0.161307, forward nfe 9212, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:46 PM Epoch: 056, Runtime 0.213163, Loss 0.160606, forward nfe 9366, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:46 PM Epoch: 057, Runtime 0.194215, Loss 0.175181, forward nfe 9520, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:46 PM Epoch: 058, Runtime 0.191750, Loss 0.168432, forward nfe 9674, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:47 PM Epoch: 059, Runtime 0.188519, Loss 0.145048, forward nfe 9828, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:47 PM Epoch: 060, Runtime 0.197311, Loss 0.144070, forward nfe 9982, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:47 PM Epoch: 061, Runtime 0.196192, Loss 0.156852, forward nfe 10136, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:47 PM Epoch: 062, Runtime 0.247126, Loss 0.145773, forward nfe 10290, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:47 PM Epoch: 063, Runtime 0.182213, Loss 0.136521, forward nfe 10444, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:48 PM Epoch: 064, Runtime 0.187716, Loss 0.206539, forward nfe 10592, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:48 PM Epoch: 065, Runtime 0.196230, Loss 0.129300, forward nfe 10740, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:48 PM Epoch: 066, Runtime 0.207507, Loss 0.156461, forward nfe 10888, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:48 PM Epoch: 067, Runtime 0.188234, Loss 0.218711, forward nfe 11036, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:48 PM Epoch: 068, Runtime 0.177004, Loss 0.131356, forward nfe 11184, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:49 PM Epoch: 069, Runtime 0.211517, Loss 0.177376, forward nfe 11332, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:49 PM Epoch: 070, Runtime 0.210412, Loss 0.150114, forward nfe 11480, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:49 PM Epoch: 071, Runtime 0.213032, Loss 0.144274, forward nfe 11628, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:49 PM Epoch: 072, Runtime 0.223553, Loss 0.174596, forward nfe 11776, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:49 PM Epoch: 073, Runtime 0.189367, Loss 0.185781, forward nfe 11924, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:50 PM Epoch: 074, Runtime 0.172353, Loss 0.154394, forward nfe 12078, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:50 PM Epoch: 075, Runtime 0.233398, Loss 0.142228, forward nfe 12232, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:50 PM Epoch: 076, Runtime 0.227292, Loss 0.210109, forward nfe 12386, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:50 PM Epoch: 077, Runtime 0.194752, Loss 0.141013, forward nfe 12540, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:51 PM Epoch: 078, Runtime 0.209012, Loss 0.130467, forward nfe 12694, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:51 PM Epoch: 079, Runtime 0.195837, Loss 0.112066, forward nfe 12848, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:51 PM Epoch: 080, Runtime 0.194854, Loss 0.148403, forward nfe 13002, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:51 PM Epoch: 081, Runtime 0.243111, Loss 0.124255, forward nfe 13156, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:51 PM Epoch: 082, Runtime 0.210999, Loss 0.132887, forward nfe 13310, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:52 PM Epoch: 083, Runtime 0.204330, Loss 0.099432, forward nfe 13464, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:52 PM Epoch: 084, Runtime 0.219934, Loss 0.137116, forward nfe 13618, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:52 PM Epoch: 085, Runtime 0.205534, Loss 0.091559, forward nfe 13772, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:52 PM Epoch: 086, Runtime 0.212131, Loss 0.160667, forward nfe 13926, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:52 PM Epoch: 087, Runtime 0.208324, Loss 0.117844, forward nfe 14080, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:53 PM Epoch: 088, Runtime 0.200645, Loss 0.151369, forward nfe 14234, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:53 PM Epoch: 089, Runtime 0.211540, Loss 0.116287, forward nfe 14388, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:53 PM Epoch: 090, Runtime 0.213368, Loss 0.105761, forward nfe 14542, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:53 PM Epoch: 091, Runtime 0.204072, Loss 0.133633, forward nfe 14690, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:53 PM Epoch: 092, Runtime 0.211616, Loss 0.122429, forward nfe 14838, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:54 PM Epoch: 093, Runtime 0.188284, Loss 0.115139, forward nfe 14980, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:54 PM Epoch: 094, Runtime 0.189046, Loss 0.127933, forward nfe 15122, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:54 PM Epoch: 095, Runtime 0.225172, Loss 0.129604, forward nfe 15264, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:54 PM Epoch: 096, Runtime 0.185084, Loss 0.117138, forward nfe 15406, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:54 PM Epoch: 097, Runtime 0.209250, Loss 0.132851, forward nfe 15548, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:55 PM Epoch: 098, Runtime 0.179075, Loss 0.140971, forward nfe 15684, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:55 PM Epoch: 099, Runtime 0.168771, Loss 0.105365, forward nfe 15820, backward nfe 0, Train: 0.9357, Val: 0.8485, Test: 0.8355, Best time: 18.2948
+2023/08/10 05:50:55 PM best val accuracy 0.848529 with test accuracy 0.835533 at epoch 11 and best time 18.294754

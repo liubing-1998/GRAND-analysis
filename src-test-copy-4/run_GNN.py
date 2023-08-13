@@ -4,11 +4,16 @@ import argparse
 import sys
 import time
 import os
+import logging
+import random
 
 import numpy as np
 import torch
 from torch_geometric.nn import GCNConv, ChebConv  # noqa
 import torch.nn.functional as F
+import torchvision.models as models
+from torch.profiler import profile, record_function, ProfilerActivity
+
 from ogb.nodeproppred import Evaluator
 
 from GNN import GNN
@@ -214,6 +219,25 @@ def merge_cmd_args(cmd_opt, opt):
   if cmd_opt['num_splits'] != 1:
     opt['num_splits'] = cmd_opt['num_splits']
 
+def makedirs(dirname):
+  if not os.path.exists(dirname):
+    os.makedirs(dirname)
+
+def analysis_run_time(model, feat, pos_encoding):
+  with profile(activities=[ProfilerActivity.CPU], record_shapes=True) as prof:
+    with record_function("model_inference"):
+      model(feat, pos_encoding)
+  print(prof.key_averages().table(sort_by="cpu_time_total"))
+  logging.info(prof.key_averages().table(sort_by="cpu_time_total"))
+
+  with profile(activities=[
+    ProfilerActivity.CPU, ProfilerActivity.CUDA], record_shapes=True) as prof:
+    with record_function("model_inference"):
+      model(feat, pos_encoding)
+  print(prof.key_averages().table(sort_by="cuda_time_total"))
+  logging.info(prof.key_averages().table(sort_by="cuda_time_total"))
+  pass
+
 
 def main(cmd_opt):
   try:
@@ -222,6 +246,13 @@ def main(cmd_opt):
     merge_cmd_args(cmd_opt, opt)
   except KeyError:
     opt = cmd_opt
+
+  makedirs(r'log/')
+  log_filename = r'log/' + opt['count'] + ".txt"
+  logging.basicConfig(filename=log_filename, level=logging.DEBUG, format='%(asctime)s %(message)s',
+                      datefmt='%Y/%m/%d %I:%M:%S %p')
+  logging.getLogger("matplotlib").setLevel(logging.WARNING)
+  logging.info(opt)
 
   # opt['not_lcc']='True'
   # 处理了一下cora数据集，划分train,valid,test
@@ -245,6 +276,12 @@ def main(cmd_opt):
     dataset.data = set_train_val_test_split(np.random.randint(0, 1000), dataset.data, num_development=5000 if opt["dataset"] == "CoauthorCS" else 1500)
 
   data = dataset.data.to(device)
+
+  # 调用函数分析程序执行慢的原因
+  analysis_run_time(model, data.x, pos_encoding)
+
+  sys.exit()
+  ##########################
 
   parameters = [p for p in model.parameters() if p.requires_grad]
   print_model_params(model)
@@ -278,11 +315,10 @@ def main(cmd_opt):
       best_time = model.odeblock.test_integrator.solver.best_time
 
     log = 'Epoch: {:03d}, Runtime {:03f}, Loss {:03f}, forward nfe {:d}, backward nfe {:d}, Train: {:.4f}, Val: {:.4f}, Test: {:.4f}, Best time: {:.4f}'
-
+    logging.info(log.format(epoch, time.time() - start_time, loss, model.fm.sum, model.bm.sum, train_acc, val_acc, test_acc, best_time))
     print(log.format(epoch, time.time() - start_time, loss, model.fm.sum, model.bm.sum, train_acc, val_acc, test_acc, best_time))
-  print('best val accuracy {:03f} with test accuracy {:03f} at epoch {:d} and best time {:03f}'.format(val_acc, test_acc,
-                                                                                                     best_epoch,
-                                                                                                     best_time))
+  logging.info('best val accuracy {:03f} with test accuracy {:03f} at epoch {:d} and best time {:03f}'.format(val_acc, test_acc, best_epoch, best_time))
+  print('best val accuracy {:03f} with test accuracy {:03f} at epoch {:d} and best time {:03f}'.format(val_acc, test_acc, best_epoch, best_time))
   return train_acc, val_acc, test_acc
 
 
@@ -441,10 +477,20 @@ if __name__ == '__main__':
 
   parser.add_argument('--pos_dist_quantile', type=float, default=0.001, help="percentage of N**2 edges to keep")
 
+  parser.add_argument('--count', type=str, default="test6_2")
+  parser.add_argument('--seed', type=int, default=2023, help="seed to control random")
 
   args = parser.parse_args()
 
   opt = vars(args)
   print(opt)
+
+  # 控制一下随机性
+  seed = args.seed
+  random.seed(seed)
+  np.random.seed(seed)
+  torch.manual_seed(seed)
+  torch.cuda.manual_seed(seed)
+  torch.backends.cudnn.deterministic = True
 
   main(opt)

@@ -1,0 +1,89 @@
+2023/08/12 09:19:43 PM {'use_cora_defaults': False, 'dataset': 'Cora', 'data_norm': 'rw', 'self_loop_weight': 1.0, 'use_labels': False, 'geom_gcn_splits': False, 'num_splits': 2, 'label_rate': 0.5, 'planetoid_split': False, 'hidden_dim': 80, 'fc_out': False, 'input_dropout': 0.5, 'dropout': 0.046878964627763316, 'batch_norm': False, 'optimizer': 'adamax', 'lr': 0.022924849756740397, 'decay': 0.00507685443154266, 'epoch': 100, 'alpha': 1.0, 'alpha_dim': 'sc', 'no_alpha_sigmoid': False, 'beta_dim': 'sc', 'block': 'constant', 'function': 'laplacian', 'use_mlp': False, 'add_source': True, 'cgnn': False, 'time': 18.294754260552843, 'augment': False, 'method': 'dopri5', 'step_size': 1, 'max_iters': 100, 'adjoint_method': 'adaptive_heun', 'adjoint': False, 'adjoint_step_size': 1, 'tol_scale': 821.9773048827274, 'tol_scale_adjoint': 1.0, 'ode_blocks': 1, 'max_nfe': 2000, 'no_early': False, 'earlystopxT': 3, 'max_test_steps': 100, 'leaky_relu_slope': 0.2, 'attention_dropout': 0.0, 'heads': 8, 'attention_norm_idx': 1, 'attention_dim': 128, 'mix_features': False, 'reweight_attention': False, 'attention_type': 'scaled_dot', 'square_plus': True, 'jacobian_norm2': None, 'total_deriv': None, 'kinetic_energy': None, 'directional_penalty': None, 'not_lcc': True, 'rewiring': None, 'gdc_method': 'ppr', 'gdc_sparsification': 'topk', 'gdc_k': 64, 'gdc_threshold': 0.01, 'gdc_avg_degree': 64, 'ppr_alpha': 0.05, 'heat_time': 3.0, 'att_samp_pct': 1, 'use_flux': False, 'exact': True, 'M_nodes': 64, 'new_edges': 'random', 'sparsify': 'S_hat', 'threshold_type': 'addD_rvR', 'rw_addD': 0.02, 'rw_rmvR': 0.02, 'rewire_KNN': False, 'rewire_KNN_T': 'T0', 'rewire_KNN_epoch': 10, 'rewire_KNN_k': 64, 'rewire_KNN_sym': False, 'KNN_online': False, 'KNN_online_reps': 4, 'KNN_space': 'pos_distance', 'beltrami': False, 'fa_layer': False, 'pos_enc_type': 'GDC', 'pos_enc_orientation': 'row', 'feat_hidden_dim': 64, 'pos_enc_hidden_dim': 16, 'edge_sampling': False, 'edge_sampling_T': 'T0', 'edge_sampling_epoch': 5, 'edge_sampling_add': 0.64, 'edge_sampling_add_type': 'importance', 'edge_sampling_rmv': 0.32, 'edge_sampling_sym': False, 'edge_sampling_online': False, 'edge_sampling_online_reps': 4, 'edge_sampling_space': 'attention', 'symmetric_attention': False, 'fa_layer_edge_sampling_rmv': 0.8, 'gpu': 0, 'pos_enc_csv': False, 'pos_dist_quantile': 0.001, 'count': 'test6', 'seed': 2023, 'adaptive': False, 'attention_rewiring': False, 'baseline': False, 'cpus': 1, 'dt': 0.001, 'dt_min': 1e-05, 'gpus': 0.5, 'grace_period': 20, 'max_epochs': 1000, 'metric': 'accuracy', 'name': 'cora_beltrami_splits', 'num_init': 1, 'num_samples': 1000, 'patience': 100, 'reduction_factor': 10, 'regularise': False, 'use_lcc': True}
+2023/08/12 09:21:48 PM {'use_cora_defaults': False, 'dataset': 'Cora', 'data_norm': 'rw', 'self_loop_weight': 1.0, 'use_labels': False, 'geom_gcn_splits': False, 'num_splits': 2, 'label_rate': 0.5, 'planetoid_split': False, 'hidden_dim': 80, 'fc_out': False, 'input_dropout': 0.5, 'dropout': 0.046878964627763316, 'batch_norm': False, 'optimizer': 'adamax', 'lr': 0.022924849756740397, 'decay': 0.00507685443154266, 'epoch': 1, 'alpha': 1.0, 'alpha_dim': 'sc', 'no_alpha_sigmoid': False, 'beta_dim': 'sc', 'block': 'constant', 'function': 'laplacian', 'use_mlp': False, 'add_source': True, 'cgnn': False, 'time': 18.294754260552843, 'augment': False, 'method': 'dopri5', 'step_size': 1, 'max_iters': 100, 'adjoint_method': 'adaptive_heun', 'adjoint': False, 'adjoint_step_size': 1, 'tol_scale': 821.9773048827274, 'tol_scale_adjoint': 1.0, 'ode_blocks': 1, 'max_nfe': 2000, 'no_early': False, 'earlystopxT': 3, 'max_test_steps': 100, 'leaky_relu_slope': 0.2, 'attention_dropout': 0.0, 'heads': 8, 'attention_norm_idx': 1, 'attention_dim': 128, 'mix_features': False, 'reweight_attention': False, 'attention_type': 'scaled_dot', 'square_plus': True, 'jacobian_norm2': None, 'total_deriv': None, 'kinetic_energy': None, 'directional_penalty': None, 'not_lcc': True, 'rewiring': None, 'gdc_method': 'ppr', 'gdc_sparsification': 'topk', 'gdc_k': 64, 'gdc_threshold': 0.01, 'gdc_avg_degree': 64, 'ppr_alpha': 0.05, 'heat_time': 3.0, 'att_samp_pct': 1, 'use_flux': False, 'exact': True, 'M_nodes': 64, 'new_edges': 'random', 'sparsify': 'S_hat', 'threshold_type': 'addD_rvR', 'rw_addD': 0.02, 'rw_rmvR': 0.02, 'rewire_KNN': False, 'rewire_KNN_T': 'T0', 'rewire_KNN_epoch': 10, 'rewire_KNN_k': 64, 'rewire_KNN_sym': False, 'KNN_online': False, 'KNN_online_reps': 4, 'KNN_space': 'pos_distance', 'beltrami': False, 'fa_layer': False, 'pos_enc_type': 'GDC', 'pos_enc_orientation': 'row', 'feat_hidden_dim': 64, 'pos_enc_hidden_dim': 16, 'edge_sampling': False, 'edge_sampling_T': 'T0', 'edge_sampling_epoch': 5, 'edge_sampling_add': 0.64, 'edge_sampling_add_type': 'importance', 'edge_sampling_rmv': 0.32, 'edge_sampling_sym': False, 'edge_sampling_online': False, 'edge_sampling_online_reps': 4, 'edge_sampling_space': 'attention', 'symmetric_attention': False, 'fa_layer_edge_sampling_rmv': 0.8, 'gpu': 0, 'pos_enc_csv': False, 'pos_dist_quantile': 0.001, 'count': 'test6', 'seed': 2023, 'adaptive': False, 'attention_rewiring': False, 'baseline': False, 'cpus': 1, 'dt': 0.001, 'dt_min': 1e-05, 'gpus': 0.5, 'grace_period': 20, 'max_epochs': 1000, 'metric': 'accuracy', 'name': 'cora_beltrami_splits', 'num_init': 1, 'num_samples': 1000, 'patience': 100, 'reduction_factor': 10, 'regularise': False, 'use_lcc': True}
+2023/08/12 09:21:48 PM Starting new HTTPS connection (1): pypi.python.org:443
+2023/08/12 09:21:48 PM Starting new HTTPS connection (1): pypi.python.org:443
+2023/08/12 09:36:06 PM -----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                         Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+              model_inference        56.19%       86.554s       100.00%      154.027s      154.027s             1  
+                  aten::copy_        11.94%       18.385s        20.57%       31.683s      50.981us        621455  
+                     aten::to         0.83%        1.275s        12.29%       18.928s      50.751us        372947  
+               aten::_to_copy         1.08%        1.665s        11.47%       17.662s      71.035us        248633  
+            aten::linalg_norm         0.91%        1.405s         5.55%        8.548s      68.796us        124250  
+                    aten::sum         4.02%        6.195s         4.18%        6.434s      25.885us        248564  
+                  aten::index         2.88%        4.428s         3.65%        5.619s      45.223us        124250  
+                    aten::mul         3.33%        5.128s         3.33%        5.128s      20.605us        248874  
+                    aten::div         3.27%        5.031s         3.27%        5.031s      20.243us        248522  
+     aten::linalg_vector_norm         2.31%        3.558s         2.60%        4.003s      32.221us        124250  
+                    aten::pow         2.03%        3.121s         2.09%        3.222s      25.926us        124270  
+                    aten::sub         1.87%        2.878s         1.87%        2.878s      23.150us        124325  
+                    aten::add         1.79%        2.760s         1.79%        2.760s      22.181us        124409  
+             aten::reciprocal         1.63%        2.512s         1.63%        2.512s      20.219us        124259  
+                 aten::select         1.01%        1.563s         1.13%        1.741s       6.996us        248799  
+                aten::dropout         0.00%       1.041ms         0.74%        1.145s     572.533ms             2  
+         aten::_fused_dropout         0.74%        1.144s         0.74%        1.144s     572.012ms             2  
+                  aten::empty         0.70%        1.086s         0.70%        1.086s       2.912us        372817  
+          aten::empty_strided         0.67%        1.040s         0.67%        1.040s       4.180us        248691  
+              aten::unsqueeze         0.51%     791.726ms         0.59%     908.693ms       7.313us        124250  
+             aten::as_strided         0.57%     884.680ms         0.57%     884.683ms       0.890us        994464  
+                 aten::linear         0.00%     290.000us         0.51%     787.796ms     393.898ms             2  
+                  aten::addmm         0.51%     786.353ms         0.51%     786.373ms     393.187ms             2  
+              aten::expand_as         0.18%     271.179ms         0.48%     732.285ms       5.893us        124260  
+                aten::resize_         0.35%     541.369ms         0.35%     541.369ms       4.356us        124279  
+                aten::reshape         0.26%     394.577ms         0.33%     500.672ms       4.030us        124250  
+                 aten::expand         0.23%     360.078ms         0.30%     466.069ms       3.751us        124262  
+         aten::_reshape_alias         0.07%     106.095ms         0.07%     106.095ms       0.854us        124250  
+                   aten::item         0.00%     474.000us         0.05%      83.352ms     626.707us           133  
+             aten::is_nonzero         0.00%     261.000us         0.05%      83.273ms     640.562us           130  
+    aten::_local_scalar_dense         0.05%      82.868ms         0.05%      82.868ms     623.068us           133  
+            aten::result_type         0.04%      53.960ms         0.04%      53.960ms       0.434us        124262  
+                aten::__and__         0.00%     927.000us         0.00%       4.177ms       4.177ms             1  
+             _UncheckedAssign         0.00%       1.866ms         0.00%       3.881ms      69.304us            56  
+              aten::clamp_min         0.00%       2.152ms         0.00%       3.739ms       1.869ms             2  
+            aten::bitwise_and         0.00%       3.250ms         0.00%       3.250ms       3.250ms             1  
+                    aten::abs         0.00%     745.000us         0.00%       3.101ms      62.020us            50  
+                   aten::relu         0.00%     846.000us         0.00%       3.018ms       3.018ms             1  
+             aten::zeros_like         0.00%     273.000us         0.00%       2.804ms      56.080us            50  
+                     aten::eq         0.00%       1.960ms         0.00%       1.960ms      24.500us            80  
+                     aten::le         0.00%       1.774ms         0.00%       1.774ms     161.273us            11  
+                  aten::fill_         0.00%       1.623ms         0.00%       1.623ms      26.607us            61  
+                  aten::zero_         0.00%     192.000us         0.00%       1.587ms      31.118us            51  
+                    aten::max         0.00%      53.000us         0.00%       1.587ms      99.188us            16  
+                aten::maximum         0.00%       1.534ms         0.00%       1.534ms      95.875us            16  
+                aten::sigmoid         0.00%       1.453ms         0.00%       1.453ms      29.060us            50  
+             aten::empty_like         0.00%     360.000us         0.00%       1.316ms      24.370us            54  
+                      aten::t         0.00%       1.096ms         0.00%       1.133ms     566.500us             2  
+                aten::view_as         0.00%     381.000us         0.00%     912.000us       7.125us           128  
+                 aten::unbind         0.00%     437.000us         0.00%     904.000us      15.586us            58  
+               aten::isfinite         0.00%     109.000us         0.00%     855.000us     106.875us             8  
+                    aten::all         0.00%     537.000us         0.00%     764.000us      42.444us            18  
+                aten::type_as         0.00%      67.000us         0.00%     701.000us      41.235us            17  
+                   aten::mean         0.00%     641.000us         0.00%     687.000us      62.455us            11  
+                     aten::gt         0.00%     667.000us         0.00%     667.000us      22.233us            30  
+                  aten::slice         0.00%     491.000us         0.00%     566.000us       9.433us            60  
+                   aten::view         0.00%     531.000us         0.00%     531.000us       4.148us           128  
+              _StitchGradient         0.00%     264.000us         0.00%     358.000us      22.375us            16  
+                     aten::lt         0.00%     334.000us         0.00%     334.000us      33.400us            10  
+                  aten::clone         0.00%      81.000us         0.00%     331.000us      82.750us             4  
+              aten::nextafter         0.00%     325.000us         0.00%     325.000us      20.312us            16  
+                   aten::sqrt         0.00%     293.000us         0.00%     293.000us      26.636us            11  
+               aten::_unique2         0.00%     117.000us         0.00%     289.000us     289.000us             1  
+                   aten::ones         0.00%      64.000us         0.00%     263.000us      32.875us             8  
+                     aten::ne         0.00%     179.000us         0.00%     179.000us      22.375us             8  
+                    aten::min         0.00%      26.000us         0.00%     171.000us      19.000us             9  
+                aten::minimum         0.00%     145.000us         0.00%     145.000us      16.111us             9  
+                  aten::zeros         0.00%     138.000us         0.00%     143.000us     143.000us             1  
+                 aten::detach         0.00%       9.000us         0.00%      50.000us      12.500us             4  
+                       detach         0.00%      41.000us         0.00%      41.000us      10.250us             4  
+                    aten::any         0.00%      16.000us         0.00%      40.000us      40.000us             1  
+              aten::transpose         0.00%      21.000us         0.00%      37.000us      18.500us             2  
+                aten::detach_         0.00%      17.000us         0.00%      26.000us       2.600us            10  
+                    aten::cat         0.00%       5.000us         0.00%      14.000us      14.000us             1  
+                      detach_         0.00%       9.000us         0.00%      11.000us       1.100us            10  
+                   aten::_cat         0.00%       8.000us         0.00%       9.000us       9.000us             1  
+           aten::resolve_conj         0.00%       3.000us         0.00%       3.000us       1.500us             2  
+          aten::promote_types         0.00%       2.000us         0.00%       2.000us       2.000us             1  
+            aten::resolve_neg         0.00%       0.000us         0.00%       0.000us       0.000us             2  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 154.028s
+
